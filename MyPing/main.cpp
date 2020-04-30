@@ -18,6 +18,7 @@
 #include <string.h>
 #include <netdb.h>
 #include <pthread.h>
+
 #define PACKET_SEND_MAX_NUM 64
 
 typedef struct ping_packet_status{
@@ -221,7 +222,7 @@ int main(int argc, char* argv[]){
 
     memcpy(dest_addr_str, argv[1], strlen(argv[1])+1);
 
-    rawsock = socket(AF_INET,SOCK_RAW,protocol->p_proto);
+    rawsock = socket(AF_INET, SOCK_STREAM, protocol->p_proto);
     if(rawsock < 0){
         printf("Fail to create socket!\n");
         return -1;
